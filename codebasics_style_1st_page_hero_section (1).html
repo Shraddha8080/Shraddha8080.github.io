@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shraddha Ravindra Deshmukh | Data Analyst & BI Developer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                        script: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        accent: {
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        /* Subtle animated gradient for hero badge */
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-brand-600 selection:text-white">
+
+    <!-- Toast Notification Container (Replaces alert()) -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- 1) Sticky Top Navigation Bar -->
+    <header class="sticky top-0 z-40 w-full bg-white/85 dark:bg-slate-900/85 glass-card border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / Name -->
+                <a href="#home" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-600 to-accent-500 flex items-center justify-center text-white font-display font-bold text-lg shadow-md shadow-brand-600/20 group-hover:scale-105 transition-transform">
+                        SD
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-slate-900 dark:text-white text-sm sm:text-base leading-tight">Shraddha Deshmukh</span>
+                        <span class="text-[11px] font-medium text-brand-600 dark:text-brand-400 leading-tight">Data Analyst | Power BI Developer</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#about" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">About</a>
+                    <a href="#skills" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Skills</a>
+                    <a href="#internship" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Internship</a>
+                    <a href="#projects" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Projects</a>
+                    <a href="#credentials" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Certifications</a>
+                    <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-brand-600 hover:bg-slate-100/70 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/70 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Right Actions: Theme Toggle & Mobile Menu -->
+                <div class="flex items-center gap-2">
+                    <button id="theme-toggle" aria-label="Toggle Dark Mode" class="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors">
+                        <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+                        <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+                    </button>
+                    <a href="#contact" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-sm font-semibold shadow-sm shadow-brand-600/20 transition-all">
+                        Hire Me / Contact
+                    </a>
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="md:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200">
+                        <i data-lucide="menu" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1">
+            <a href="#about" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#skills" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#internship" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Internship</a>
+            <a href="#projects" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Projects</a>
+            <a href="#credentials" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Certifications</a>
+            <a href="#contact" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-brand-600 dark:text-brand-400 font-semibold">Contact & Hire Me</a>
+        </div>
+    </header>
+
+    <!-- 2) Hero Section (Codebasics Portfolio Style) -->
+    <section id="home" class="relative overflow-hidden bg-white dark:bg-slate-950 pt-8 pb-16 sm:pt-12 sm:pb-24 border-b border-slate-200/70 dark:border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[460px] sm:min-h-[520px]">
+
+                <!-- Left Column: Greeting, Name, Blue Line + Role, Resume Pill & Circular Social Icons -->
+                <div class="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
+                    <p class="font-script text-2xl sm:text-3xl font-medium text-slate-900 dark:text-slate-100 leading-none">
+                        Hello, I am
+                    </p>
+
+                    <h1 class="mt-2 font-display text-3xl sm:text-5xl font-bold text-slate-950 dark:text-white tracking-tight leading-[1.12]">
+                        Shraddha Ravindra Deshmukh
+                    </h1>
+
+                    <!-- Role Label -->
+                    <div class="mt-4 flex items-center justify-center lg:justify-start">
+                        <span class="text-lg sm:text-xl font-medium text-[#2563eb] dark:text-blue-400">
+                            Data Analyst
+                        </span>
+                    </div>
+
+                    <!-- Outlined Resume Button -->
+                    <div class="mt-6">
+                        <a href="Shraddha_Deshmukh_Data_Analyst_Resume.pdf" download="Shraddha_Deshmukh_Data_Analyst_Resume.pdf" onclick="return handleResumeClick(event)" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-md border border-[#2563eb] text-[#2563eb] dark:text-blue-400 dark:border-blue-400 hover:bg-[#2563eb] hover:text-white dark:hover:bg-blue-500 dark:hover:text-white text-sm font-medium transition-colors cursor-pointer">
+                            <span>Resume</span>
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                        </a>
+                    </div>
+
+                    <!-- Circular LinkedIn & GitHub Icons -->
+                    <div class="mt-5 flex items-center justify-center lg:justify-start gap-3">
+                        <a href="https://www.linkedin.com/in/shraddha-deshmukh-10210b295/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" class="w-8 h-8 rounded-full bg-[#0a66c2] hover:bg-[#084e96] text-white flex items-center justify-center shadow-sm transition-transform hover:scale-105" title="LinkedIn Profile">
+                            <span class="font-sans font-bold text-xs leading-none">in</span>
+                        </a>
+                        <a href="https://github.com/Shraddha8080" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" class="w-8 h-8 rounded-full bg-[#52b748] hover:bg-[#439a3b] text-white flex items-center justify-center shadow-sm transition-transform hover:scale-105" title="GitHub (Shraddha8080)">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Large Circular Portrait with Blue Ring -->
+                <div class="lg:col-span-6 flex items-center justify-center order-1 lg:order-2">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[390px] lg:h-[390px] rounded-full p-[5px] bg-[#2563eb] shadow-lg">
+                        <div class="w-full h-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800 relative flex items-center justify-center">
+                            <img 
+                                src="profile.jpg" 
+                                alt="Shraddha Ravindra Deshmukh" 
+                                class="w-full h-full object-cover object-[center_16%]"
+                                onerror="this.style.display='none'; document.getElementById('hero-circle-fallback').classList.remove('hidden'); document.getElementById('hero-circle-fallback').classList.add('flex');"
+                            >
+                            <div id="hero-circle-fallback" class="hidden w-full h-full flex-col items-center justify-center bg-slate-900 text-white">
+                                <span class="font-display text-5xl font-extrabold tracking-tight">SD</span>
+                                <span class="mt-1 text-xs font-medium text-blue-300">Data Analyst</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) About & Core Technical Skills Section -->
+    <section id="about" class="py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Candidate Summary</span>
+                <h2 class="mt-1 font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    About Me
+                </h2>
+                <p class="mt-3 text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                    I am a B.E. Information Technology graduate (9.07 CGPA) focused on solving operational and commercial business problems through data analytics and business intelligence. My core strength lies in bridging relational database engineering (PostgreSQL, MySQL) and Python data preparation with intuitive, executive-grade Power BI storytelling enabling teams to spot margin leakage, optimize inventory levels, and track KPIs with confidence.
+                </p>
+            </div>
+
+            <!-- Core Technical Skills & Domain Expertise -->
+            <div id="skills" class="mt-12 pt-8 border-t border-slate-200/70 dark:border-slate-800/70">
+                <div class="max-w-3xl mb-8">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Technical Proficiency</span>
+                    <h3 class="mt-1 font-display text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+                        Core Technical Skills & Domain Expertise
+                    </h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Category 1: BI & Data Visualization -->
+                    <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-4 border border-amber-200/50 dark:border-amber-800/50">
+                            <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">BI & Data Visualization</h4>
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Data modeling, DAX calculations & governance</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Power BI</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">DAX</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Power Query</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Star Schema Modeling</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Row-Level Security</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Tableau</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Looker Studio</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: Databases & Querying -->
+                    <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-brand-50 dark:bg-brand-950/50 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-4 border border-brand-200/50 dark:border-brand-800/50">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Databases & Querying</h4>
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Relational querying, transformations & tuning</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">PostgreSQL</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">MySQL</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Complex Joins</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">CTEs</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Window Functions</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Query Optimization</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: Programming & Data Analysis -->
+                    <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mb-4 border border-emerald-200/50 dark:border-emerald-800/50">
+                            <i data-lucide="code-2" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Programming &amp; Analysis</h4>
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">EDA, statistical cleaning &amp; spreadsheet modeling</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Python</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Pandas &amp; NumPy</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Matplotlib &amp; Seaborn</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">R</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Advanced Excel</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">XLOOKUP &amp; Pivots</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Generative AI &amp; Azure AI</span>
+                        </div>
+                    </div>
+
+                    <!-- Category 4: Business Domains -->
+                    <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-11 h-11 rounded-xl bg-teal-50 dark:bg-teal-950/50 text-teal-600 dark:text-teal-400 flex items-center justify-center mb-4 border border-teal-200/50 dark:border-teal-800/50">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <h4 class="font-display font-bold text-lg text-slate-900 dark:text-white">Business Domains</h4>
+                        <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">KPI frameworks &amp; functional problem solving</p>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">Supply Chain &amp; Inventory</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">ABC/XYZ Segmentation</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">ETL &amp; Star/Snowflake Schema</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold">CX &amp; Revenue Analytics</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Dedicated 6-Month Internship Experience Section -->
+            <div id="internship" class="mt-12 pt-8 border-t border-slate-200/70 dark:border-slate-800/70">
+                <div class="max-w-3xl mb-6">
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Industry Experience</span>
+                    <h3 class="mt-1 font-display text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+                        Internship Experience
+                    </h3>
+                </div>
+
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/90 dark:border-slate-800 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-100 dark:border-slate-800">
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2.5">
+                                <h4 class="font-display text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
+                                    Python &amp; Data Science Intern
+                                </h4>
+                                <span class="px-3 py-1 rounded-full bg-brand-50 dark:bg-brand-950/70 text-brand-700 dark:text-brand-300 text-xs font-bold border border-brand-200/60 dark:border-brand-800/60">
+                                    6 Months
+                                </span>
+                            </div>
+                            <p class="mt-1 text-sm font-semibold text-brand-600 dark:text-brand-400">
+                                Sanyu Infotech Pvt. Ltd., Pune
+                            </p>
+                        </div>
+                        <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold self-start sm:self-auto">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
+                            <span>June 2025 &ndash; December 2025</span>
+                        </div>
+                    </div>
+
+                    <ul class="mt-5 space-y-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <li class="flex items-start gap-2.5">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-brand-600 dark:bg-brand-400 shrink-0"></span>
+                            <span>Applied <strong>Python (Pandas, NumPy)</strong> and data science techniques to clean, analyze, and report on data for real-time business projects across a structured 6-month internship.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="mt-1.5 w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                            <span>Recognized in the internship completion certificate for <strong>strong technical skills, dedication, and a professional approach</strong>.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) Interactive Filterable Project Showcase -->
+    <section id="projects" class="py-16 sm:py-20 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200/70 dark:border-slate-800/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Header + Filter Tabs -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Proof of Work</span>
+                    <h2 class="mt-1 font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                        Featured Analytics Projects
+                    </h2>
+                    <p class="mt-2 text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl">
+                        Filter by core technology stack or click <strong>View Case Study</strong> to inspect architecture, SQL/DAX logic, and business outcomes.
+                    </p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="inline-flex flex-wrap p-1.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm self-start md:self-auto" role="tablist">
+                    <button onclick="filterProjects('all')" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-brand-600 text-white shadow-sm transition-all cursor-pointer">
+                        All Projects (4)
+                    </button>
+                    <button onclick="filterProjects('Power BI')" data-filter="Power BI" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-all cursor-pointer">
+                        Power BI
+                    </button>
+                    <button onclick="filterProjects('SQL')" data-filter="SQL" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-all cursor-pointer">
+                        SQL
+                    </button>
+                    <button onclick="filterProjects('Python')" data-filter="Python" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-brand-600 dark:hover:text-white transition-all cursor-pointer">
+                        Python
+                    </button>
+                </div>
+            </div>
+
+            <!-- Projects Grid (Populated via JS for clean filtering & modal binding) -->
+            <div id="projects-grid" class="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Cards injected dynamically -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5) Certifications, Virtual Internships & Education Timeline -->
+    <section id="credentials" class="py-16 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Verified Credentials & Academic Background</span>
+                <h2 class="mt-1 font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                    Certifications, Virtual Internships & Education
+                </h2>
+                <p class="mt-2 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                    Industry-recognized analytics certifications, practical corporate simulations, and engineering degree distinction.
+                </p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Card 1: Google Data Analytics Professional Certificate -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-bold border border-blue-200/60 dark:border-blue-800/60">
+                                GenAI &amp; Analytics Certification
+                            </span>
+                            <i data-lucide="award" class="w-5 h-5 text-blue-600 dark:text-blue-400"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">Data Analytics with Generative AI</h3>
+                        <p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Simplilearn SkillUp &bull; Jul 2026</p>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Completed training on applying Generative AI workflows alongside data analysis, root-cause diagnostics, and automated reporting.
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-brand-600 dark:text-brand-400">
+                        <span>Verified Credential (Jul 2026)</span>
+                        <span>Generative AI &bull; Analytics</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Forage Simulations & Azure AI -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-xs font-bold border border-amber-200/60 dark:border-amber-800/60">
+                                Simulations &amp; Cloud AI
+                            </span>
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-amber-600 dark:text-amber-400"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">Deloitte &amp; PwC Job Simulations + Microsoft Azure AI</h3>
+                        <p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Forage (Deloitte Australia &amp; PwC) &bull; Microsoft (2025)</p>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Completed Data Analytics Job Simulation (Forage / Deloitte Australia, Jul 2025), Power BI Data Analyst Simulation (Forage / PwC, 2025), and Microsoft Azure AI Essentials Certification (2025).
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-amber-600 dark:text-amber-400">
+                        <span>2025 Credentials</span>
+                        <span>Power BI &bull; Deloitte &bull; Azure AI</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Education - B.E. Information Technology -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 text-xs font-bold border border-indigo-200/60 dark:border-indigo-800/60">
+                                Education &bull; Jan 2021 &ndash; Jun 2025
+                            </span>
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-indigo-600 dark:text-indigo-400"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">B.E. in Information Technology</h3>
+                        <p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Prof. Ram Meghe College of Engineering &amp; Management, Badnera (SGBAU)</p>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Graduated with <strong>CGPA: 9.07</strong> (Jan 2021 &ndash; Jun 2025) under Sant Gadge Baba Amravati University with strong foundations in RDBMS, data modeling, statistics, and Python.
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+                        <span>CGPA: 9.07</span>
+                        <span>SGBAU &bull; 2025</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: 6-Month Internship Highlight -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-200/60 dark:border-emerald-800/60">
+                                6-Month Internship &bull; Jun &ndash; Dec 2025
+                            </span>
+                            <i data-lucide="briefcase" class="w-5 h-5 text-emerald-600 dark:text-emerald-400"></i>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 dark:text-white">Python &amp; Data Science Intern</h3>
+                        <p class="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">Sanyu Infotech Pvt. Ltd., Pune</p>
+                        <p class="mt-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Cleaned, analyzed, and reported on data for real-time business projects using Python (Pandas, NumPy) over 6 months, earning recognition in the completion certificate.
+                        </p>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-emerald-600 dark:text-emerald-400">
+                        <span>Jun 2025 &ndash; Dec 2025</span>
+                        <span>Python &bull; Pandas &bull; NumPy</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) Clean Contact & Social Links Footer -->
+    <footer id="contact" class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-brand-600 via-brand-700 to-accent-600 rounded-3xl p-8 sm:p-12 text-white shadow-xl shadow-brand-600/15">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+                    <!-- Left Contact Info -->
+                    <div class="lg:col-span-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-white/15 text-white text-xs font-bold uppercase tracking-wider mb-3">
+                            Open to Full-Time Opportunities
+                        </span>
+                        <h2 class="font-display text-2xl sm:text-4xl font-extrabold tracking-tight">
+                            Looking for a Data Analyst or Power BI Developer?
+                        </h2>
+                        <p class="mt-3 text-brand-100 text-sm sm:text-base max-w-xl leading-relaxed">
+                            I am actively interviewing for full-time <strong>Data Analyst, BI Developer, and Business Analyst</strong> roles across Nagpur, Pune, Bengaluru, and hybrid/remote teams nationwide.
+                        </p>
+
+                        <!-- Quick Copy Email Box -->
+                        <div class="mt-6 flex items-center justify-between gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3.5 max-w-md">
+                            <div class="flex items-center gap-2.5 min-w-0">
+                                <i data-lucide="mail" class="w-5 h-5 text-white shrink-0"></i>
+                                <span id="email-text" class="text-xs sm:text-sm font-semibold truncate">deshmukhshraddha48@gmail.com</span>
+                            </div>
+                            <button onclick="copyEmail()" class="shrink-0 px-3.5 py-2 rounded-xl bg-white text-brand-700 hover:bg-brand-50 text-xs font-bold shadow-sm transition-all flex items-center gap-1.5 cursor-pointer">
+                                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                Copy
+                            </button>
+                        </div>
+
+                        <div class="mt-5 flex flex-wrap items-center gap-3">
+                            <a href="https://github.com/Shraddha8080" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-semibold border border-white/20 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                                GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/shraddha-deshmukh-10210b295/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-semibold border border-white/20 transition-colors">
+                                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Quick-Message Form -->
+                    <div class="lg:col-span-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 sm:p-6">
+                        <h3 class="font-display font-bold text-lg text-white">Send a Quick Message</h3>
+                        <p class="text-xs text-brand-100 mt-0.5">Have an interview opportunity or role inquiry? Reach out directly.</p>
+                        <form onsubmit="handleQuickMessage(event)" class="mt-4 space-y-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input type="text" id="sender-name" required placeholder="Your Name / Recruiter" class="w-full px-3.5 py-2.5 rounded-xl bg-white/95 text-slate-900 placeholder-slate-500 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white">
+                                <input type="email" id="sender-email" required placeholder="Work Email" class="w-full px-3.5 py-2.5 rounded-xl bg-white/95 text-slate-900 placeholder-slate-500 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white">
+                            </div>
+                            <textarea id="sender-message" rows="3" required placeholder="Role details (e.g., Data Analyst / Power BI Developer) or interview availability..." class="w-full px-3.5 py-2.5 rounded-xl bg-white/95 text-slate-900 placeholder-slate-500 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                            <button type="submit" class="w-full py-3 px-5 rounded-xl bg-slate-950 hover:bg-slate-900 text-white font-bold text-xs sm:text-sm shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Send Message to Shraddha
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Links & Metadata -->
+            <div class="mt-12 pt-8 border-t border-slate-200/80 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+                    <span class="font-display font-bold text-slate-900 dark:text-white">Shraddha Ravindra Deshmukh</span>
+                    <span class="hidden sm:inline text-slate-300 dark:text-slate-700">&bull;</span>
+                    <span class="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-600 dark:text-brand-400"></i>
+                        Nagpur / Pune / Bengaluru / Remote
+                    </span>
+                </div>
+
+                <!-- Social Navigation Links -->
+                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                    <a href="https://github.com/Shraddha8080" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1.5 transition-colors">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/shraddha-deshmukh-10210b295/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1.5 transition-colors">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                        LinkedIn
+                    </a>
+                    <button onclick="copyEmail()" class="hover:text-brand-600 dark:hover:text-brand-400 flex items-center gap-1.5 transition-colors cursor-pointer">
+                        <i data-lucide="mail" class="w-4 h-4"></i>
+                        Copy Email
+                    </button>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-center sm:justify-between text-xs text-slate-400 dark:text-slate-500">
+                <span>&copy; <span id="current-year"></span> Shraddha Ravindra Deshmukh. Data Analyst &amp; Power BI Developer Portfolio.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 1: Project Case Study & Interactive Preview Modal               -->
+    <!-- ===================================================================== -->
+    <div id="case-study-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/75 backdrop-blur-sm overflow-y-auto">
+        <div class="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden my-auto animate-[fadeIn_0.2s_ease-out]">
+            
+            <!-- Modal Top Bar -->
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900">
+                <div class="flex items-center gap-2">
+                    <span id="modal-category-badge" class="px-2.5 py-1 rounded-lg bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400 text-xs font-bold">
+                        Case Study
+                    </span>
+                    <span class="text-xs text-slate-400 hidden sm:inline">• Interactive Architecture & KPI Breakdown</span>
+                </div>
+                <button onclick="closeCaseStudyModal()" aria-label="Close Modal" class="p-2 rounded-xl bg-slate-200/70 hover:bg-slate-300/70 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 sm:p-8 max-h-[82vh] overflow-y-auto space-y-6">
+                <div>
+                    <h3 id="modal-title" class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+                        Project Title
+                    </h3>
+                    <div id="modal-tools" class="mt-3 flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Interactive Simulated Dashboard Preview Box -->
+                <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-950 text-white p-5 sm:p-6 shadow-inner">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-800">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            <span id="modal-dashboard-header" class="ml-2 text-xs font-mono text-slate-400">BI_Executive_View.pbix</span>
+                        </div>
+                        <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                            Interactive KPI Snapshot
+                        </span>
+                    </div>
+                    <!-- Dynamic Dashboard Mockup Visual -->
+                    <div id="modal-dashboard-visual" class="mt-5"></div>
+                </div>
+
+                <!-- Problem & Methodology Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/70">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 flex items-center gap-1.5">
+                            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                            Business Problem Statement
+                        </h4>
+                        <p id="modal-problem" class="mt-2.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/70">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 flex items-center gap-1.5">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                            Approach & Key DAX / SQL Techniques
+                        </h4>
+                        <p id="modal-architecture" class="mt-2.5 text-sm text-slate-700 dark:text-slate-300 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- Key Business Impact Bullets -->
+                <div class="p-5 rounded-2xl bg-emerald-50/60 dark:bg-emerald-950/25 border border-emerald-200/70 dark:border-emerald-800/50">
+                    <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 flex items-center gap-1.5">
+                        <i data-lucide="trending-up" class="w-4 h-4"></i>
+                        Quantified Business Impact & Outcomes
+                    </h4>
+                    <ul id="modal-impact-list" class="mt-3 space-y-2 text-sm text-slate-700 dark:text-slate-200"></ul>
+                </div>
+
+                <!-- Modal Footer Actions -->
+                <div class="pt-2 flex flex-wrap items-center justify-between gap-4">
+                    <a id="modal-github-link" href="https://github.com/Shraddha8080" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-brand-600 dark:hover:bg-brand-700 text-white font-semibold text-sm shadow-sm transition-all">
+                        <i data-lucide="github" class="w-4 h-4"></i>
+                        Explore Repository on GitHub
+                    </a>
+                    <button onclick="closeCaseStudyModal()" class="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-sm transition-colors cursor-pointer">
+                        Close Preview
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 2: 60-Second Video Pitch & Elevator Summary Modal               -->
+    <!-- ===================================================================== -->
+    <div id="pitch-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-slate-950/75 backdrop-blur-sm">
+        <div class="relative w-full max-w-2xl bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-600 animate-ping"></span>
+                    <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 dark:text-white">60-Second Recruiter Introduction</h3>
+                </div>
+                <button onclick="closePitchModal()" aria-label="Close Video Pitch" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 cursor-pointer">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-5">
+                <!-- Interactive Video Pitch Player Placeholder -->
+                <div class="relative aspect-video rounded-2xl bg-gradient-to-br from-slate-900 via-brand-950 to-slate-900 border border-slate-800 flex flex-col items-center justify-center text-center p-6 overflow-hidden">
+                    <div class="w-16 h-16 rounded-full bg-brand-600/90 text-white flex items-center justify-center shadow-lg shadow-brand-600/40 mb-4">
+                        <i data-lucide="video" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="font-display font-bold text-lg text-white">Shraddha Ravindra Deshmukh</h4>
+                    <p class="text-xs sm:text-sm text-brand-200 mt-1 max-w-md">
+                        "Hi! I'm Shraddha—a B.E. Information Technology graduate (9.07 CGPA) seeking full-time Data Analyst and Power BI Developer roles."
+                    </p>
+                    <div class="mt-4 px-3 py-1.5 rounded-full bg-white/10 text-[11px] font-medium text-slate-300 border border-white/15">
+                        Tip: Replace this frame with your YouTube Unlisted or Loom video embed URL
+                    </div>
+                </div>
+
+                <!-- Elevator Pitch Transcript Highlights -->
+                <div class="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-2 leading-relaxed">
+                    <p class="font-bold text-slate-900 dark:text-white">60-Second Elevator Pitch Script:</p>
+                    <p>
+                        "Hello! I'm Shraddha Deshmukh, a 2025 B.E. Information Technology graduate with a 9.07 CGPA, specializing in Power BI, SQL, Python, and Excel. Across my end-to-end projects—including ABC/XYZ Supply Chain Optimization in PostgreSQL and Power BI, D2C growth analytics, and 100K+ product catalog analysis in Python—I focus on turning raw operational data into clear executive dashboards that reduce costs and protect revenue. I am an immediate joiner excited to contribute to a data-driven analytics team."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Interactivity, Project Data, Theme & Modals -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // ---------------------------------------------------------------------
+        // 1. Dark / Light Theme Management
+        // ---------------------------------------------------------------------
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check saved preference or system preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', htmlElement.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Mobile Navigation Drawer Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // ---------------------------------------------------------------------
+        // 2. Toast Notification Helper (Zero alert() usage)
+        // ---------------------------------------------------------------------
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+            const bgClass = type === 'success' 
+                ? 'bg-slate-900 dark:bg-brand-600 text-white border-slate-700 dark:border-brand-500' 
+                : 'bg-amber-600 text-white border-amber-500';
+            
+            toast.className = `pointer-events-auto flex items-center gap-2.5 px-4 py-3 rounded-xl border shadow-xl text-xs sm:text-sm font-semibold transition-all duration-300 transform translate-y-2 opacity-0 ${bgClass}`;
+            toast.innerHTML = `
+                <i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            requestAnimationFrame(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+                toast.classList.add('translate-y-0', 'opacity-100');
+            });
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3200);
+        }
+
+        function copyEmail() {
+            const email = 'deshmukhshraddha48@gmail.com';
+            const tempInput = document.createElement('input');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(`Copied ${email} to clipboard!`);
+            } catch (err) {
+                showToast(`Email: ${email}`);
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        // Resume Download Handler (Points to Shraddha_Deshmukh_Data_Analyst_Resume.pdf with summary fallback)
+        function handleResumeClick(event) {
+            const pdfFile = 'Shraddha_Deshmukh_Data_Analyst_Resume.pdf';
+            fetch(pdfFile, { method: 'HEAD' })
+                .then(res => {
+                    if (res.ok) {
+                        showToast('Downloading Shraddha_Deshmukh_Data_Analyst_Resume.pdf...');
+                    } else {
+                        if (event) event.preventDefault();
+                        downloadResumeSummaryFallback();
+                    }
+                })
+                .catch(() => {
+                    if (event) event.preventDefault();
+                    downloadResumeSummaryFallback();
+                });
+        }
+
+        function downloadResumeSummaryFallback() {
+            const resumeSummary = [
+                'SHRADDHA RAVINDRA DESHMUKH',
+                'Data Analyst',
+                'Phone: +91 7499134934 | Email: deshmukhshraddha48@gmail.com',
+                'LinkedIn: linkedin.com/in/shraddha-deshmukh-10210b295 | GitHub: github.com/Shraddha8080',
+                '',
+                'EXPERIENCE',
+                '- Python & Data Science Intern, Sanyu Infotech Pvt. Ltd., Pune (June 2025 - December 2025, 6 Months)',
+                '  * Applied Python (Pandas, NumPy) and data science techniques to clean, analyze and report on data for real-time business projects.',
+                '  * Recognized in the internship completion certificate for strong technical skills, dedication and a professional approach.',
+                '',
+                'EDUCATION',
+                '- B.E., Information Technology, Prof. Ram Meghe College of Engineering & Management, Badnera (Jan 2021 - Jun 2025)',
+                '  Sant Gadge Baba Amravati University | CGPA: 9.07',
+                '',
+                'CORE SKILLS',
+                '- Data Analysis & Programming: Python (Pandas, NumPy, Matplotlib, Seaborn), SQL (MySQL, PostgreSQL), R, EDA, Root-Cause Analysis, Predictive Modeling, ABC/XYZ Analysis, Inventory Optimization, Supply Chain Analytics',
+                '- BI & Reporting: Power BI (DAX, Power Query, Data Modeling), Tableau, Looker, Excel (Pivot Tables, VLOOKUP, XLOOKUP, KPI Dashboards, Report Automation)',
+                '- Databases & Modeling: MySQL, PostgreSQL, MongoDB, Relational Databases, SQL Aggregation Pipelines, ETL, Data Warehousing, Star & Snowflake Schema',
+                '- Data Quality & AI: Data Cleaning, Data Validation, Data Quality Checks, Data Integrity, Normalization, Generative AI in Data Analytics, Microsoft Azure AI',
+                '',
+                'PROJECTS',
+                '1. End-to-End Supply Chain Analytics and ABC/XYZ Inventory Optimization ($36.78M revenue, 54.83% late delivery rate, 17.84% OTIF rate)',
+                '2. AI-Augmented Customer Experience & Revenue Protection Platform (85,000+ customer support records, 3-tier Power BI dashboard, GenAI ticket drafting)',
+                '3. Tehho D2C Growth & Operations Analytics',
+                '4. Amazon 100K+ Products Catalog & Pricing Intelligence',
+                '',
+                'CERTIFICATIONS',
+                '- Data Analytics with Generative AI, Simplilearn SkillUp (Jul 2026)',
+                '- Data Analytics Job Simulation, Forage / Deloitte Australia (Jul 2025)',
+                '- Power BI Data Analyst Simulation, Forage / PwC (2025)',
+                '- Microsoft Azure AI Essentials Certification (2025)'
+            ].join('\n');
+
+            try {
+                const blob = new Blob([resumeSummary], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Shraddha_Deshmukh_Data_Analyst_Resume_Summary.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                showToast('Upload Shraddha_Deshmukh_Data_Analyst_Resume.pdf to your repo for direct PDF download.');
+            } catch (err) {
+                showToast('Unable to trigger download in this preview frame.');
+            }
+        }
+
+        // Quick-Message Form Handler
+        function handleQuickMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById('sender-name').value.trim();
+            const email = document.getElementById('sender-email').value.trim();
+            const message = document.getElementById('sender-message').value.trim();
+
+            const subject = encodeURIComponent(`Data Analyst / Power BI Opportunity from ${name}`);
+            const body = encodeURIComponent(`Hi Shraddha,\n\n${message}\n\nBest regards,\n${name} (${email})`);
+            
+            showToast(`Opening email client to send message from ${name}...`);
+            window.location.href = `mailto:deshmukhshraddha48@gmail.com?subject=${subject}&body=${body}`;
+            event.target.reset();
+        }
+
+        // ---------------------------------------------------------------------
+        // 3. Portfolio Projects Data (Corporate-Ready Case Studies)
+        // ---------------------------------------------------------------------
+        const projectsData = [
+            {
+                id: 'supply-chain-abc-xyz',
+                title: 'End-to-End Supply Chain Analytics: ABC/XYZ Inventory Optimization',
+                shortDesc: 'Designed a PostgreSQL star schema on DataCo Global Supply Chain data and built a Power BI dashboard tracking $36.78M revenue, 54.83% late delivery, and 17.84% OTIF.',
+                categories: ['Power BI', 'SQL', 'Python'],
+                tools: ['PostgreSQL', 'Python', 'Pandas', 'Power BI', 'DAX', 'Star Schema'],
+                repoUrl: 'https://github.com/Shraddha8080/End-to-End-Supply-Chain-Analytics-ABC-XYZ-Inventory-Optimization',
+                dashboardFile: 'Supply_Chain_ABC_XYZ_Executive.pbix',
+                kpis: [
+                    { label: 'Revenue Tracked', value: '$36.78M', accent: 'text-emerald-400' },
+                    { label: 'Late Delivery Rate', value: '54.83% (1st: 95.32%)', accent: 'text-rose-400' },
+                    { label: 'OTIF Rate', value: '17.84%', accent: 'text-brand-400' }
+                ],
+                problem: 'Operations and procurement teams lacked unified visibility into revenue concentration, demand variability, shipping lead-time variance (such as First Class reaching a 95.32% late delivery rate), and on-time in-full (OTIF) performance across the DataCo Global Supply Chain dataset.',
+                architecture: 'Designed a PostgreSQL star schema (fact_orders with customer, product, and location dimensions) from a cleaned staging layer, wrote SQL queries for 30-day rolling demand trends, CLV rankings, and shipping mode lead-time variance, and ran Python (Pandas) ABC/XYZ Pareto and coefficient-of-variation segmentation mapped to 9 safety-stock policies (AX to CZ) in Power BI.',
+                impacts: [
+                    'Tracked $36.78M in revenue alongside a 54.83% late delivery rate (First Class highest at 95.32%) and a 17.84% OTIF rate.',
+                    'Mapped 9 safety-stock policies across AX through CZ segments to reduce stockout risk on high-priority SKUs.',
+                    'Delivered a Power BI executive dashboard featuring DAX KPIs, a 9-box ABC/XYZ matrix, and a critical SKU action plan.'
+                ]
+            },
+            {
+                id: 'ai-cx-revenue-protection',
+                title: 'AI-Augmented Customer Experience & Revenue Protection Platform',
+                shortDesc: 'Aggregated 85,000+ customer support records via SQL pipelines into a 3-tier Power BI dashboard with a Generative AI layer that auto-drafts developer tickets from RCA.',
+                categories: ['Power BI', 'SQL', 'Python'],
+                tools: ['SQL', 'Power BI', 'DAX', 'Generative AI', 'RCA Pipelines'],
+                repoUrl: 'https://github.com/Shraddha8080',
+                dashboardFile: 'CX_Revenue_Protection_Suite.pbix',
+                kpis: [
+                    { label: 'Support Records', value: '85,000+', accent: 'text-brand-400' },
+                    { label: 'Dashboard Tiers', value: '3-Tier Executive BI', accent: 'text-sky-400' },
+                    { label: 'Workflow Automation', value: 'GenAI Dev Tickets', accent: 'text-emerald-400' }
+                ],
+                problem: 'High volumes of customer support complaints and recurring technical issues risked revenue retention while creating manual overhead when translating root-cause findings into engineering tickets.',
+                architecture: 'Collected, aggregated, and validated 85,000+ customer support records using SQL aggregation pipelines, built a 3-tier Power BI dashboard tracking revenue at risk and complaint volume, and integrated a Generative AI layer that converts root-cause analysis into auto-drafted developer tickets.',
+                impacts: [
+                    'Prepared and quality-checked 85,000+ customer support records through structured SQL aggregation pipelines.',
+                    'Enabled non-technical stakeholders to monitor revenue at risk and complaint volume via a 3-tier Power BI dashboard.',
+                    'Automated recurring reporting and ticket creation by turning root-cause analysis into auto-drafted developer tickets with Generative AI.'
+                ]
+            },
+            {
+                id: 'tehho-d2c-growth',
+                title: 'Tehho D2C Growth & Operations Analytics',
+                shortDesc: 'Built an end-to-end D2C commerce performance tracker evaluating revenue funnel conversion, order fulfillment, and repeat customer retention.',
+                categories: ['Power BI', 'SQL'],
+                tools: ['Power BI', 'DAX', 'SQL', 'Excel'],
+                repoUrl: 'https://github.com/Shraddha8080/Tehho-D2C-Growth-Operations',
+                dashboardFile: 'Tehho_D2C_Growth_Operations.pbix',
+                kpis: [
+                    { label: 'Funnel Visibility', value: 'End-to-End D2C', accent: 'text-sky-400' },
+                    { label: 'Retention Tracking', value: 'Repeat vs New', accent: 'text-emerald-400' },
+                    { label: 'Ops Bottlenecks', value: 'Fulfillment & Returns', accent: 'text-amber-400' }
+                ],
+                problem: 'Direct-to-consumer (D2C) growth teams needed visibility into how top-of-funnel orders, product mix, repeat purchasing behavior, and fulfillment operations impacted net contribution margin.',
+                architecture: 'Cleaned and standardized transactional order and operational tables, engineered DAX time-intelligence and cohort/retention measures, and designed a multi-page Power BI dashboard with interactive category and channel filters.',
+                impacts: [
+                    'Consolidated sales velocity, repeat purchase rates, and operational fulfillment metrics into a single decision view.',
+                    'Enabled rapid identification of top-performing SKUs and operational friction points across order cycles.',
+                    'Provided stakeholders with repeatable KPI tracking to guide promotional and inventory planning.'
+                ]
+            },
+            {
+                id: 'amazon-100k-products',
+                title: 'Amazon 100K+ Products Catalog & Pricing Intelligence',
+                shortDesc: 'Analyzed 100,000+ e-commerce product records using Python to uncover pricing dynamics, rating distributions, best-seller signals, and category opportunities.',
+                categories: ['Python'],
+                tools: ['Python', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'Jupyter'],
+                repoUrl: 'https://github.com/Shraddha8080/Amazon-products-Data-Analysis-with-julius-Ai-Python-',
+                dashboardFile: 'amazon_100k_catalog_eda.ipynb',
+                kpis: [
+                    { label: 'Catalog Scale', value: '100,000+ SKUs', accent: 'text-amber-400' },
+                    { label: 'Pricing & Ratings', value: 'Multi-Category EDA', accent: 'text-brand-400' },
+                    { label: 'Insight Output', value: 'Category Benchmarks', accent: 'text-emerald-400' }
+                ],
+                problem: 'Evaluating pricing competitiveness, customer ratings, and market saturation across more than 100,000 product listings is impractical manually and requires structured programmatic cleaning and statistical exploration.',
+                architecture: 'Executed a reproducible Python workflow using Pandas and NumPy to clean malformed price/rating fields, handle missing values, segment categories, and generate publication-ready distributions with Matplotlib and Seaborn.',
+                impacts: [
+                    'Processed and validated 100,000+ product entries to surface category-level price bands and customer rating patterns.',
+                    'Uncovered high-rating, lower-competition niches alongside heavily discounted or saturated product segments.',
+                    'Established a clean, reusable Python EDA pipeline for ongoing catalog and pricing benchmarking.'
+                ]
+            }
+        ];
+
+        let activeFilter = 'all';
+
+        // Render Project Cards into #projects-grid
+        function renderProjects(filter = 'all') {
+            const grid = document.getElementById('projects-grid');
+            if (!grid) return;
+
+            const filtered = filter === 'all'
+                ? projectsData
+                : projectsData.filter(proj => proj.categories.includes(filter));
+
+            grid.innerHTML = filtered.map(proj => `
+                <article class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 p-6 sm:p-7 shadow-sm hover:shadow-xl hover:border-brand-300 dark:hover:border-brand-700 transition-all flex flex-col justify-between">
+                    <div>
+                        <!-- Category Badges -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                            <div class="flex flex-wrap gap-1.5">
+                                ${proj.categories.map(cat => `
+                                    <span class="px-2.5 py-1 rounded-lg bg-brand-50 dark:bg-brand-950/70 text-brand-700 dark:text-brand-300 text-xs font-bold border border-brand-200/60 dark:border-brand-800/60">
+                                        ${cat}
+                                    </span>
+                                `).join('')}
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400 dark:text-slate-500">${proj.dashboardFile}</span>
+                        </div>
+
+                        <!-- Title & Summary -->
+                        <h3 class="font-display text-xl font-extrabold text-slate-900 dark:text-white leading-snug">
+                            ${proj.title}
+                        </h3>
+                        <p class="mt-2.5 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            ${proj.shortDesc}
+                        </p>
+
+                        <!-- Mini KPI Strip -->
+                        <div class="mt-5 grid grid-cols-3 gap-2.5 p-3.5 rounded-2xl bg-slate-950 text-white border border-slate-800">
+                            ${proj.kpis.map(kpi => `
+                                <div class="text-center sm:text-left">
+                                    <div class="text-xs sm:text-sm font-extrabold ${kpi.accent} truncate">${kpi.value}</div>
+                                    <div class="text-[10px] text-slate-400 truncate">${kpi.label}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+
+                        <!-- Tool Chips -->
+                        <div class="mt-5 flex flex-wrap gap-1.5">
+                            ${proj.tools.map(tool => `
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[11px] font-semibold">
+                                    ${tool}
+                                </span>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <!-- Card Actions -->
+                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                        <button onclick="openCaseStudyModal('${proj.id}')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white text-xs sm:text-sm font-semibold shadow-sm transition-all cursor-pointer">
+                            <i data-lucide="file-bar-chart-2" class="w-4 h-4"></i>
+                            View Case Study
+                        </button>
+                        <a href="${proj.repoUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs sm:text-sm font-semibold transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            GitHub Repo
+                        </a>
+                    </div>
+                </article>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Filter Handler bound to Filter Tabs
+        function filterProjects(category) {
+            activeFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const isSelected = btn.getAttribute('data-filter') === category;
+                if (isSelected) {
+                    btn.classList.add('active', 'bg-brand-600', 'text-white', 'shadow-sm');
+                    btn.classList.remove('text-slate-600', 'dark:text-slate-300', 'hover:text-brand-600', 'dark:hover:text-white');
+                } else {
+                    btn.classList.remove('active', 'bg-brand-600', 'text-white', 'shadow-sm');
+                    btn.classList.add('text-slate-600', 'dark:text-slate-300', 'hover:text-brand-600', 'dark:hover:text-white');
+                }
+            });
+            renderProjects(category);
+        }
+
+        // ---------------------------------------------------------------------
+        // 4. Case Study & Pitch Modals Logic
+        // ---------------------------------------------------------------------
+        function openCaseStudyModal(projectId) {
+            const proj = projectsData.find(p => p.id === projectId);
+            if (!proj) return;
+
+            document.getElementById('modal-category-badge').textContent = proj.categories.join(' • ');
+            document.getElementById('modal-title').textContent = proj.title;
+            document.getElementById('modal-dashboard-header').textContent = proj.dashboardFile;
+            document.getElementById('modal-problem').textContent = proj.problem;
+            document.getElementById('modal-architecture').textContent = proj.architecture;
+            document.getElementById('modal-github-link').href = proj.repoUrl;
+
+            document.getElementById('modal-tools').innerHTML = proj.tools.map(t => `
+                <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold border border-slate-200/70 dark:border-slate-700">
+                    ${t}
+                </span>
+            `).join('');
+
+            document.getElementById('modal-dashboard-visual').innerHTML = `
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    ${proj.kpis.map(k => `
+                        <div class="p-4 rounded-xl bg-slate-900 border border-slate-800">
+                            <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">${k.label}</div>
+                            <div class="mt-1 text-lg sm:text-xl font-display font-extrabold ${k.accent}">${k.value}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            document.getElementById('modal-impact-list').innerHTML = proj.impacts.map(item => `
+                <li class="flex items-start gap-2">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            const modal = document.getElementById('case-study-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeCaseStudyModal() {
+            const modal = document.getElementById('case-study-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        function openPitchModal() {
+            const modal = document.getElementById('pitch-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closePitchModal() {
+            const modal = document.getElementById('pitch-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Close modals on backdrop click or Escape key
+        document.getElementById('case-study-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'case-study-modal') closeCaseStudyModal();
+        });
+        document.getElementById('pitch-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'pitch-modal') closePitchModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCaseStudyModal();
+                closePitchModal();
+            }
+        });
+
+        // Initial Render
+        renderProjects(activeFilter);
+    </script>
+</body>
+</html>
